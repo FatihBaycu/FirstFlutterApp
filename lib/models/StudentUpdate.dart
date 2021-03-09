@@ -14,7 +14,10 @@ class StudentUpdate extends StatefulWidget {
   }
 }
 
-class _StudentUpdate extends State {
+class _StudentUpdate extends State<StudentUpdate> {
+    var formKey = GlobalKey<FormState>();
+    Student student = Student("", "", 0);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +27,65 @@ class _StudentUpdate extends State {
       body: buildBody(),
     );
   }
+
+  buildBody() {
+  return Container(
+    margin:EdgeInsets.all(20.0),
+    child:Form(
+      key: formKey,
+      child:Column(
+        children: [
+          buildFirstNameField(),
+          buildLastNameField(),
+          buildGradeField(),
+          buildSubmitButton()
+          ],)
+             )
+        );
+      }
+      
+  buildFirstNameField() {
+    return TextFormField(
+    
+      decoration: InputDecoration(labelText: "Öğrenci Adı", hintText: "a"),
+      onSaved: (String value) {
+        student.firstName = value;
+      },
+    );
+  }
+
+  buildLastNameField() {
+    return TextFormField(  
+      decoration:
+          InputDecoration(labelText: "Öğrenci Soyadı", hintText: "b"),
+          
+      onSaved: (String value2) {
+        student.lastName = value2;
+      },
+    );
+  }
+
+  buildGradeField() {
+    return TextFormField(
+      
+      decoration:
+          InputDecoration(labelText: "Öğrenci Sınav Notu", hintText: "75"),
+      onSaved: (String value3) {
+        this.student.grade = int.parse(value3);
+      },
+    );
+  }
+
+  Widget buildSubmitButton() {
+    return ElevatedButton(
+      child: Text("Kaydet"),
+      onPressed: () {
+        formKey.currentState.save();
+        widget.students.add(student);
+        Navigator.pop(context);
+      },
+    );
+  }
+
 }
 
-buildBody() {}

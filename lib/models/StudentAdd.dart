@@ -51,7 +51,7 @@ class _StudentAddState extends State<StudentAdd> {
 
   buildFirstNameField() {
     return TextFormField(
-      decoration: InputDecoration(labelText: "Öğrenci Adı", hintText: "Tufan"),
+      decoration: InputDecoration(labelText: "Öğrenci Adı", hintText: "a"),
       onSaved: (String value) {
         student.firstName = value;
       },
@@ -61,7 +61,7 @@ class _StudentAddState extends State<StudentAdd> {
   buildLastNameField() {
     return TextFormField(
       decoration:
-          InputDecoration(labelText: "Öğrenci Soyadı", hintText: "Karçam"),
+          InputDecoration(labelText: "Öğrenci Soyadı", hintText: "b"),
       onSaved: (String value2) {
         student.lastName = value2;
       },
