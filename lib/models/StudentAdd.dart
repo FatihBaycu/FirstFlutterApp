@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_2/student_validator.dart';
 import 'Student.dart';
 
 // ignore: must_be_immutable
@@ -18,7 +19,7 @@ class StudentAdd extends StatefulWidget{
   }
 }
 
-class _StudentAddState extends State<StudentAdd> {
+class _StudentAddState extends State<StudentAdd> with StudentValidationMixin  {
   var formKey = GlobalKey<FormState>();
   Student student = Student("", "", 0);
 
@@ -52,6 +53,7 @@ class _StudentAddState extends State<StudentAdd> {
   buildFirstNameField() {
     return TextFormField(
       decoration: InputDecoration(labelText: "Öğrenci Adı", hintText: "a"),
+      validator: validateFirstName,
       onSaved: (String value) {
         student.firstName = value;
       },
@@ -61,7 +63,8 @@ class _StudentAddState extends State<StudentAdd> {
   buildLastNameField() {
     return TextFormField(
       decoration:
-          InputDecoration(labelText: "Öğrenci Soyadı", hintText: "b"),
+    InputDecoration(labelText: "Öğrenci Soyadı", hintText: "b"),
+    validator: validateLastName,
       onSaved: (String value2) {
         student.lastName = value2;
       },
@@ -70,8 +73,11 @@ class _StudentAddState extends State<StudentAdd> {
 
   buildGradeField() {
     return TextFormField(
-      decoration:
-          InputDecoration(labelText: "Öğrenci Sınav Notu", hintText: "75"),
+    keyboardType: TextInputType.number,
+    decoration:
+    InputDecoration(labelText: "Öğrenci Sınav Notu", hintText: "75"),
+    validator: validateGrade,
+
       onSaved: (String value3) {
         this.student.grade = int.parse(value3);
       },
@@ -82,9 +88,12 @@ class _StudentAddState extends State<StudentAdd> {
     return ElevatedButton(
       child: Text("Kaydet"),
       onPressed: () {
-        formKey.currentState.save();
+        if(formKey.currentState.validate()){
+          formKey.currentState.save();
         widget.students.add(student);
         Navigator.pop(context);
+        }
+        
       },
     );
   }

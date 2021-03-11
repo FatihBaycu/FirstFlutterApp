@@ -22,14 +22,13 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> { 
     List<Student> students = [
-    Student.withId(1, "İsim A", "Soyisim B", 100),
-    Student.withId(2, "İsim C", "Soyisim F", 50),
-    Student.withId(3, "İsim D", "Soyisim G", 95),
-    Student.withId(4, "İsim E", "Soyisim H", 75)
+    Student.withId(1, "Adem", "Kara", 100),
+    Student.withId(2, "Ceyhun", "Yılmaz", 50),
+    Student.withId(3, "Rasim", "Kılıç", 95),
+    Student.withId(4, "Recep", "Erek", 75)
   ];
 
-  
-Student selectedStudent= Student.withId(0, "Hiç Kimse", "", 0);
+  Student selectedStudent=Student.withId(0,"","",0);
     @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -91,7 +90,8 @@ Student selectedStudent= Student.withId(0, "Hiç Kimse", "", 0);
                 //     context,
                 //     MaterialPageRoute(
                 //         builder: (context) => StudentAdd(students)));
-                        Navigator.push(context,MaterialPageRoute(builder: (context) => StudentAdd(students)),).then((value) => setState(() {}));},
+               Navigator.push(context,MaterialPageRoute(builder: (context) => StudentAdd(students)),).then((value) => setState(() {}));
+               },
               child: Row(
                 children: <Widget>[
                   Icon(Icons.add),
@@ -115,7 +115,9 @@ Student selectedStudent= Student.withId(0, "Hiç Kimse", "", 0);
           primary: Colors.orangeAccent, // background
           onPrimary: Colors.black, // foreground
         ),
-        onPressed: () {Navigator.push(context,MaterialPageRoute(builder: (context) => StudentUpdate(students)));},
+        onPressed: () {
+            Navigator.push(context,MaterialPageRoute(builder: (context) =>StudentUpdate(selectedStudent)),).then((value)  =>setState((){}));
+        },
         child: Row(
           children: <Widget>[
             Icon(Icons.update),
@@ -139,7 +141,6 @@ Student selectedStudent= Student.withId(0, "Hiç Kimse", "", 0);
   }
 
 Flexible buildFlexible3 () {
-  int index2= selectedStudent.id;
   return Flexible(
     fit: FlexFit.tight,
     flex: 1,
@@ -149,7 +150,11 @@ Flexible buildFlexible3 () {
         primary: Colors.red, // background
         onPrimary: Colors.white, // foreground
       ),
-      onPressed: () {/*students.remove(index2);*/students.removeWhere((item) => item.id == index2);},
+        onPressed: () {
+             setState(() {
+              students.remove(selectedStudent);
+            });
+        },
       child: Row(
         children: <Widget>[
         

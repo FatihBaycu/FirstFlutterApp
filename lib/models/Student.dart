@@ -5,6 +5,9 @@ class Student {
   int grade;
   String status;
 
+      Student.withOutInfo(){}
+
+
   Student(String firstName, String lastName, int grade) {
     this.firstName = firstName;
     this.lastName = lastName;
