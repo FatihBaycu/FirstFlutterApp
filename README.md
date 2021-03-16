@@ -1,6 +1,6 @@
 # flutter_application_2
 
-A new Flutter project.
+Bu Projede List içine Öğrenci Ekliyebilir,Silebilir,Güncelliyebilirsiniz.
 
 ## Getting Started
 
