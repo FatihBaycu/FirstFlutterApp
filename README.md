@@ -1,4 +1,4 @@
-# flutter_application_2
+# OgrenciCRUD
 
 Bu Projede List içine Öğrenci Ekliyebilir,Silebilir,Güncelliyebilirsiniz.
 
