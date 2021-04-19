@@ -1,6 +1,6 @@
 # OgrenciCRUD
 
-Bu Projede List içine Öğrencileri Görüntüleyebilir, Ekliyebilir,Silebilir,Güncelliyebilirsiniz.
+Bu Projede List içine Öğrencileri Görüntüleyebilir, Ekliyebilir,Silebilir,Güncelliyebilirsiniz.  
 In this project you can Show,Add,Update and Delete Students.
 ## Getting Started
 
