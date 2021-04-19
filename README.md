@@ -1,7 +1,7 @@
 # OgrenciCRUD
 
-Bu Projede List içine Öğrenci Ekliyebilir,Silebilir,Güncelliyebilirsiniz.
-
+Bu Projede List içine Öğrencileri Görüntüleyebilir, Ekliyebilir,Silebilir,Güncelliyebilirsiniz.
+In this project you can Show,Add,Update and Delete Students.
 ## Getting Started
 
 This project is a starting point for a Flutter application.
